@@ -9,6 +9,8 @@
 #include "car.h"
 #include "termcolor.hpp"
 
+using namespace std;
+
 Car::Car() {
     this->name = "";
     this->price = 0;
