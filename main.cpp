@@ -5,6 +5,7 @@
 #include <iostream>
 #include "car.h"
 #include "termcolor.hpp"
+#include <fstream>
 
 using namespace std;
 
@@ -21,6 +22,28 @@ Car carlist[AMOUNT_CARS] = {
         Car("tesla model3", 900),
         Car("tesla kibertruck", 1500)
 };
+
+void start_image() {
+    string buffer;
+    ifstream startimagefile("start.txt");
+    while(!startimagefile.eof()) {
+        getline(startimagefile, buffer);
+        cout << buffer << "\n";
+    }
+    startimagefile.close();
+}
+
+void end() {
+    cout << termcolor::green;
+    string buffer;
+    ifstream endimage("exit.txt");
+    while(!endimage.eof()) {
+        getline(endimage, buffer);
+        cout << buffer << "\n";
+    }
+    endimage.close();
+    exit(0);
+}
 
 bool have_car(string carname) {
     for (int i = 0; i < AMOUNT_CARS; i++) {
@@ -79,6 +102,7 @@ void change_carname_and_carprice(string carname, string new_carname, int new_car
 }
 
 int main() {
+    start_image();
     while(1) {
         cout << termcolor::white << "1. Список машин\n2. Арендовать  машину\n";
         cout << "3. Изменить данные автомобиля(Только для администратора)\n4. Выход\n";
@@ -197,8 +221,7 @@ int main() {
                 break;
             }
             case 4: {
-                cout << termcolor::green << "exited" << endl;
-                exit(0);
+                end();
             }
             default:
                 break;
