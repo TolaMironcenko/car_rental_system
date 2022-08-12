@@ -22,10 +22,10 @@ int main() {
         Car("tesla_kibertruck", 1500000)
     };
 
-    // for (int i = 0; i < 10; i++) {
-    //     cout << termcolor::red << "[" << i << "]: ";
-    //     carlist[i].print();
-    // }
+    for (int i = 0; i < 10; i++) {
+        cout << termcolor::red << "[" << i << "]: ";
+        cout << carlist[i];
+    }
 
     return 0;
 }

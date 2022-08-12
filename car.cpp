@@ -57,7 +57,7 @@ void Car::print() {
 }
 
 ostream& operator <<(ostream& os, const Car& car1) {
-    return os << termcolor::green << "name: " << termcolor::white << car1.name << termcolor::green << "\nprice: " << termcolor::yellow << car1.price << endl;
+    return os << termcolor::green << "\tname: " << termcolor::blue << car1.name << termcolor::green << "\n\tprice: " << termcolor::yellow << car1.price << endl;
 }
 
 #endif
