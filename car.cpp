@@ -2,8 +2,12 @@
 // created by anatoly mironcenko
 // 
 
+#ifndef CAR_RENTAL_SYSTEM_CAR_CPP
+#define  CAR_RENTAL_SYSTEM_CAR_CPP
+
 #include <iostream>
 #include "car.h"
+#include "termcolor.hpp"
 
 Car::Car() {
     this->name = "";
@@ -46,6 +50,12 @@ string Car::getname() {
     return this->name;
 }
 
-ostream& operator <<(ostream& os, const Car& car1) {
-    return os << "name: " << car1.name << "\nprice: " << car1.price << endl;
+void Car::print() {
+    cout << termcolor::green << "\tname: " << termcolor::blue << this->name << termcolor::green << "\n\tprice: " << termcolor::yellow << this->price << endl;
 }
+
+ostream& operator <<(ostream& os, const Car& car1) {
+    return os << termcolor::green << "name: " << termcolor::white << car1.name << termcolor::green << "\nprice: " << termcolor::yellow << car1.price << endl;
+}
+
+#endif
