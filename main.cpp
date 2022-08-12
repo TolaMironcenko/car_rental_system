@@ -45,7 +45,7 @@ void change_carname(bool print, string carname, string new_carname) {
         if (carlist[i].getname() == carname) {
             carlist[i].setname(new_carname);
             if (print) {
-                cout << termcolor::white << "Новый данные автомобиля\n";
+                cout << termcolor::white << "Новыe данные автомобиля\n";
                 carlist[i].print();
             }
             break;
@@ -58,7 +58,7 @@ void change_carprice(bool print, string carname, int new_carprice) {
         if (carlist[i].getname() == carname) {
             carlist[i].setprice(new_carprice);
             if (print) {
-                cout << termcolor::white << "Новый данные автомобиля\n";
+                cout << termcolor::white << "Новыe данные автомобиля\n";
                 carlist[i].print();
             }
             break;
@@ -92,7 +92,7 @@ int main() {
                 for (int i = 0; i < AMOUNT_CARS; i++) {
                     cout << termcolor::white << "||" << termcolor::red << "[" << i+1 << "]" << termcolor::white << "\t||";
                     cout << "" << termcolor::blue << carlist[i].getname();
-                    if (carlist[i].getname().size() == 4) {
+                    if (carlist[i].getname().size() <= 4) {
                         cout << "\t\t";
                     }
                     if (carlist[i].getname().size() > 4 && carlist[i].getname().size() < 21 && carlist[i].getname().size() != 16) {
@@ -113,7 +113,7 @@ int main() {
                     cout << termcolor::red << "У нас нет такой машины\n";
                     break;
                 }
-                cout << termcolor::white << "Введите время аренды: ";
+                cout << termcolor::white << "Введите время аренды в минутах: ";
                 int time_of_rent;
                 cin >> time_of_rent;
                 cout << termcolor::white << "Вам необходимо заплатить ";
