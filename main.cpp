@@ -80,7 +80,8 @@ void change_carname_and_carprice(string carname, string new_carname, int new_car
 
 int main() {
     while(1) {
-        cout << termcolor::white << "1. Список машин\n2. Арендовать  машину\n3. Изменить данные автомобиля(Только для администратора)\n4. Выход\n";
+        cout << termcolor::white << "1. Список машин\n2. Арендовать  машину\n";
+        cout << "3. Изменить данные автомобиля(Только для администратора)\n4. Выход\n";
         int what;
         cin >> what;
 
@@ -90,15 +91,19 @@ int main() {
                 cout << termcolor::white << "||number||\tname\t\t||\tprice\t||\n";
                 cout << termcolor::white << "--------------------------------------------------\n";
                 for (int i = 0; i < AMOUNT_CARS; i++) {
-                    cout << termcolor::white << "||" << termcolor::red << "[" << i+1 << "]" << termcolor::white << "\t||";
+                    cout << termcolor::white << "||" << termcolor::red << "[" << i+1 << "]";
+                    cout << termcolor::white << "\t||";
                     cout << "" << termcolor::blue << carlist[i].getname();
                     if (carlist[i].getname().size() <= 4) {
                         cout << "\t\t";
                     }
-                    if (carlist[i].getname().size() > 4 && carlist[i].getname().size() < 21 && carlist[i].getname().size() != 16) {
+                    if (carlist[i].getname().size() > 4 && 
+                        carlist[i].getname().size() < 21 && 
+                        carlist[i].getname().size() != 16) {
                         cout << "\t";
                     }
-                    cout << termcolor::white << "\t||" << "\t" << termcolor::yellow << carlist[i].getprice() << termcolor::white << "p";
+                    cout << termcolor::white << "\t||" << "\t" << termcolor::yellow;
+                    cout << carlist[i].getprice() << termcolor::white << "p";
                     cout << termcolor::white << "\t||\n";
                     cout << termcolor::white << "--------------------------------------------------\n";
                 }
@@ -142,7 +147,8 @@ int main() {
                 string carname;
                 string end = "0";
                 while(1) {
-                    cout << termcolor::white << "Введите текуще имя автомобиля или 00 чтобы вернуться назад: ";
+                    cout << termcolor::white;
+                    cout << "Введите текуще имя автомобиля или 00 чтобы вернуться назад: ";
                     cin.ignore();
                     getline(cin, carname);
                     if(carname == end) {
@@ -156,7 +162,8 @@ int main() {
                 if (carname == end) {
                     break;
                 }
-                cout << termcolor::white << "Что вы хотите изменить?\n1. Название автомобиля\n2. Цену автомобиля\n3. И название и цену\n";
+                cout << termcolor::white << "Что вы хотите изменить?\n1. Название автомобиля\n";
+                cout << "2. Цену автомобиля\n3. И название и цену\n";
                 int what_change;
                 cin >> what_change;
                 switch(what_change) {

@@ -53,11 +53,14 @@ string Car::getname() {
 }
 
 void Car::print() {
-    cout << termcolor::green << "\tname: " << termcolor::blue << this->name << termcolor::green << "\n\tprice: " << termcolor::yellow << this->price << "\n";
+    cout << termcolor::green << "\tname: " << termcolor::blue << this->name;
+    cout << termcolor::green << "\n\tprice: " << termcolor::yellow << this->price << "\n";
 }
 
 ostream& operator <<(ostream& os, const Car& car1) {
-    return os << termcolor::green << "\tname: " << termcolor::blue << car1.name << termcolor::green << "\tprice: " << termcolor::yellow << car1.price;
+    os << termcolor::green << "\tname: " << termcolor::blue << car1.name;
+    os << termcolor::green << "\tprice: " << termcolor::yellow << car1.price;
+    return os;
 }
 
 #endif
