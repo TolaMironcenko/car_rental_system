@@ -101,36 +101,106 @@ void change_carname_and_carprice(string carname, string new_carname, int new_car
     }
 }
 
+int start() {
+    cout << termcolor::white << "1. Список машин\n2. Арендовать  машину\n";
+    cout << "3. Изменить данные автомобиля(Только для администратора)\n4. Выход\n";
+    int what;
+    cin >> what;
+    return what;
+}
+
+void print_all_cars() {
+    cout << termcolor::white << "--------------------------------------------------\n";
+    cout << termcolor::white << "||number||\tname\t\t||\tprice\t||\n";
+    cout << termcolor::white << "--------------------------------------------------\n";
+    for (int i = 0; i < AMOUNT_CARS; i++) {
+        cout << termcolor::white << "||" << termcolor::red << "[" << i+1 << "]";
+        cout << termcolor::white << "\t||";
+        cout << "" << termcolor::blue << carlist[i].getname();
+        if (carlist[i].getname().size() <= 5) {
+            cout << "\t\t";
+        }
+        if (carlist[i].getname().size() > 5 && 
+            carlist[i].getname().size() < 21 && 
+            carlist[i].getname().size() != 16) {
+            cout << "\t";
+        }
+        cout << termcolor::white << "\t||" << "\t" << termcolor::yellow;
+        cout << carlist[i].getprice() << termcolor::white << "p";
+        cout << termcolor::white << "\t||\n";
+        cout << termcolor::white << "--------------------------------------------------\n";
+    }
+}
+
+void rent(string carname) {
+    cout << termcolor::white << "Введите время аренды в минутах: ";
+    int time_of_rent;
+    cin >> time_of_rent;
+    cout << termcolor::white << "Вам необходимо заплатить ";
+    cout << termcolor::green << time_of_rent*get_price_by_carname(carname);
+    cout << termcolor::white << "p\n";
+    cout << termcolor::white << "1. Оплатить\n2. Отказ\n";
+    int agree;
+    cin >> agree;
+    switch(agree) {
+        case 1: {
+            cout << termcolor::green << "Оплачено\n";
+            break;
+        }
+        case 2: {
+            cout << termcolor::red << "Отказ\n";
+            break;
+        }
+        default: {
+            cout << termcolor::red << "Отказ\n";
+            break;
+        }
+    }
+}
+
+void change_car_info(string carname) {
+    cout << termcolor::white << "Что вы хотите изменить?\n1. Название автомобиля\n";
+    cout << "2. Цену автомобиля\n3. И название и цену\n";
+    int what_change;
+    cin >> what_change;
+    switch(what_change) {
+        case 1: {
+            cout << termcolor::white << "Введите новое имя автомобиля: ";
+            string new_carname;
+            cin.ignore();
+            getline(cin, new_carname);
+            change_carname(true, carname, new_carname);
+            break;
+        }
+        case 2: {
+            cout << termcolor::white << "Введите новую цену автомобиля: ";
+            int new_carprice;
+            cin >> new_carprice;
+            change_carprice(true, carname, new_carprice);
+            break;
+        }
+        case 3: {
+            cout << termcolor::white << "Введите новое имя автомобиля: ";
+            string new_carname;
+            cin.ignore();
+            getline(cin, new_carname);
+            cout << termcolor::white << "Введите новую цену автомобиля: ";
+            int new_carprice;
+            cin >> new_carprice;
+            change_carname_and_carprice(carname, new_carname, new_carprice);
+            break;
+        }
+    }
+}
+
 int main() {
     start_image();
     while(1) {
-        cout << termcolor::white << "1. Список машин\n2. Арендовать  машину\n";
-        cout << "3. Изменить данные автомобиля(Только для администратора)\n4. Выход\n";
-        int what;
-        cin >> what;
+        int what = start();
 
         switch(what) {
             case 1: {
-                cout << termcolor::white << "--------------------------------------------------\n";
-                cout << termcolor::white << "||number||\tname\t\t||\tprice\t||\n";
-                cout << termcolor::white << "--------------------------------------------------\n";
-                for (int i = 0; i < AMOUNT_CARS; i++) {
-                    cout << termcolor::white << "||" << termcolor::red << "[" << i+1 << "]";
-                    cout << termcolor::white << "\t||";
-                    cout << "" << termcolor::blue << carlist[i].getname();
-                    if (carlist[i].getname().size() <= 4) {
-                        cout << "\t\t";
-                    }
-                    if (carlist[i].getname().size() > 4 && 
-                        carlist[i].getname().size() < 21 && 
-                        carlist[i].getname().size() != 16) {
-                        cout << "\t";
-                    }
-                    cout << termcolor::white << "\t||" << "\t" << termcolor::yellow;
-                    cout << carlist[i].getprice() << termcolor::white << "p";
-                    cout << termcolor::white << "\t||\n";
-                    cout << termcolor::white << "--------------------------------------------------\n";
-                }
+                print_all_cars();
                 break;
             }
             case 2:{
@@ -142,29 +212,7 @@ int main() {
                     cout << termcolor::red << "У нас нет такой машины\n";
                     break;
                 }
-                cout << termcolor::white << "Введите время аренды в минутах: ";
-                int time_of_rent;
-                cin >> time_of_rent;
-                cout << termcolor::white << "Вам необходимо заплатить ";
-                cout << termcolor::green << time_of_rent*get_price_by_carname(carname);
-                cout << termcolor::white << "p\n";
-                cout << termcolor::white << "1. Оплатить\n2. Отказ\n";
-                int agree;
-                cin >> agree;
-                switch(agree) {
-                    case 1: {
-                        cout << termcolor::green << "Оплачено\n";
-                        break;
-                    }
-                    case 2: {
-                        cout << termcolor::red << "Отказ\n";
-                        break;
-                    }
-                    default: {
-                        cout << termcolor::red << "Отказ\n";
-                        break;
-                    }
-                }
+                rent(carname);
                 break;
             }
             case 3: {
@@ -186,38 +234,7 @@ int main() {
                 if (carname == end) {
                     break;
                 }
-                cout << termcolor::white << "Что вы хотите изменить?\n1. Название автомобиля\n";
-                cout << "2. Цену автомобиля\n3. И название и цену\n";
-                int what_change;
-                cin >> what_change;
-                switch(what_change) {
-                    case 1: {
-                        cout << termcolor::white << "Введите новое имя автомобиля: ";
-                        string new_carname;
-                        cin.ignore();
-                        getline(cin, new_carname);
-                        change_carname(true, carname, new_carname);
-                        break;
-                    }
-                    case 2: {
-                        cout << termcolor::white << "Введите новую цену автомобиля: ";
-                        int new_carprice;
-                        cin >> new_carprice;
-                        change_carprice(true, carname, new_carprice);
-                        break;
-                    }
-                    case 3: {
-                        cout << termcolor::white << "Введите новое имя автомобиля: ";
-                        string new_carname;
-                        cin.ignore();
-                        getline(cin, new_carname);
-                        cout << termcolor::white << "Введите новую цену автомобиля: ";
-                        int new_carprice;
-                        cin >> new_carprice;
-                        change_carname_and_carprice(carname, new_carname, new_carprice);
-                        break;
-                    }
-                }
+                change_car_info(carname);
                 break;
             }
             case 4: {
