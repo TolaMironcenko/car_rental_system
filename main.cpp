@@ -31,6 +31,9 @@ void start_image() {
         cout << buffer << "\n";
     }
     startimagefile.close();
+    ofstream logsfile("alllogs.txt",  std::ios::app);
+    logsfile << termcolor::white << "start: " << termcolor::green << "OK\n";
+    logsfile.close();
 }
 
 void end() {
@@ -42,6 +45,9 @@ void end() {
         cout << buffer << "\n";
     }
     endimage.close();
+    ofstream logsfile("alllogs.txt",  std::ios::app);
+    logsfile << termcolor::white << "end: " << termcolor::green << "OK\n";
+    logsfile.close();
     exit(0);
 }
 
@@ -69,6 +75,9 @@ void change_carname(bool print, string carname, string new_carname) {
             carlist[i].setname(new_carname);
             if (print) {
                 cout << termcolor::white << "Новыe данные автомобиля\n";
+                ofstream logsfile("alllogs.txt",  std::ios::app);
+                logsfile << termcolor::white << "change carname:" << termcolor::green << "OK\n";
+                logsfile.close();
                 carlist[i].print();
             }
             break;
@@ -82,6 +91,9 @@ void change_carprice(bool print, string carname, int new_carprice) {
             carlist[i].setprice(new_carprice);
             if (print) {
                 cout << termcolor::white << "Новыe данные автомобиля\n";
+                ofstream logsfile("alllogs.txt",  std::ios::app);
+                logsfile << termcolor::white << "change carprice:" << termcolor::green << "OK\n";
+                logsfile.close();
                 carlist[i].print();
             }
             break;
@@ -95,6 +107,9 @@ void change_carname_and_carprice(string carname, string new_carname, int new_car
             carlist[i].setname(new_carname);
             carlist[i].setprice(new_carprice);
             cout << termcolor::white << "Новый данные автомобиля\n";
+            ofstream logsfile("alllogs.txt",  std::ios::app);
+            logsfile << termcolor::white << "change carinfo:" << termcolor::green << "OK\n";
+            logsfile.close();
             carlist[i].print();
             break;
         }
@@ -130,6 +145,9 @@ void print_all_cars() {
         cout << termcolor::white << "\t||\n";
         cout << termcolor::white << "--------------------------------------------------\n";
     }
+    ofstream logsfile("alllogs.txt",  std::ios::app);
+    logsfile << termcolor::white << "print all cars:" << termcolor::green << "OK\n";
+    logsfile.close();
 }
 
 void rent(string carname) {
@@ -156,14 +174,23 @@ void rent(string carname) {
             fout << "===================================================================\n";
             fout.close();
             cout << termcolor::green << "Оплачено\n";
+            ofstream logsfile("alllogs.txt",  std::ios::app);
+            logsfile << termcolor::white << "start rent:" << termcolor::green << "OK\n";
+            logsfile.close();
             break;
         }
         case 2: {
             cout << termcolor::red << "Отказ\n";
+            ofstream logsfile("alllogs.txt",  std::ios::app);
+            logsfile << termcolor::white << "start rent:" << termcolor::yellow << "WARNING\n";
+            logsfile.close();
             break;
         }
         default: {
             cout << termcolor::red << "Отказ\n";
+            ofstream logsfile("alllogs.txt",  std::ios::app);
+            logsfile << termcolor::white << "start rent:" << termcolor::yellow << "WARNING\n";
+            logsfile.close();
             break;
         }
     }
@@ -221,6 +248,9 @@ int main() {
                 getline(cin, carname);
                 if (!have_car(carname)) {
                     cout << termcolor::red << "У нас нет такой машины\n";
+                    ofstream logsfile("alllogs.txt",  std::ios::app);
+                    logsfile << termcolor::white << "error rent:" << termcolor::red << "ERROR: don't have this car\n";
+                    logsfile.close();
                     break;
                 }
                 rent(carname);
@@ -239,6 +269,9 @@ int main() {
                     }else{
                         if (!have_car(carname)) {
                             cout << termcolor::red << "У нас нет такой машины\n";
+                            ofstream logsfile("alllogs.txt",  std::ios::app);
+                            logsfile << termcolor::white << "error rent:" << termcolor::red << "ERROR: don't have this car\n";
+                            logsfile.close();
                         }else{break;}
                     }
                 }

@@ -2,3 +2,12 @@
 *.vscode
 *.idea
 *.DS_Store
+*.Makefile.swp
+*.car.cpp.swp
+*.car.h.swp
+*.exit.txt.swp
+*.log.txt.swp
+*.main.cpp.swp
+*.start.txt.swp
+*.termcolor.hpp.swp
+*.gitignore.swp
