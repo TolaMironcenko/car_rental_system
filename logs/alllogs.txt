@@ -55,3 +55,13 @@ end: OK
 start: OK
 print all cars:OK
 end: OK
+start: OK
+end: OK
+start: OK
+print all cars:OK
+end: OK
+start: OK
+print all cars:OK
+start rent:OK
+start rent:WARNING
+end: OK

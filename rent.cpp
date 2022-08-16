@@ -26,21 +26,21 @@ void rent(string carname) {
             fout << "===================================================================\n";
             fout.close();
             cout << termcolor::green << "Оплачено\n";
-            ofstream logsfile("alllogs.txt",  std::ios::app);
+            ofstream logsfile("logs/alllogs.txt",  std::ios::app);
             logsfile << termcolor::white << "start rent:" << termcolor::green << "OK\n";
             logsfile.close();
             break;
         }
         case 2: {
             cout << termcolor::red << "Отказ\n";
-            ofstream logsfile("alllogs.txt",  std::ios::app);
+            ofstream logsfile("logs/alllogs.txt",  std::ios::app);
             logsfile << termcolor::white << "start rent:" << termcolor::yellow << "WARNING\n";
             logsfile.close();
             break;
         }
         default: {
             cout << termcolor::red << "Отказ\n";
-            ofstream logsfile("alllogs.txt",  std::ios::app);
+            ofstream logsfile("logs/alllogs.txt",  std::ios::app);
             logsfile << termcolor::white << "start rent:" << termcolor::yellow << "WARNING\n";
             logsfile.close();
             break;
