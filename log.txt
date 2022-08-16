@@ -1,0 +1,11 @@
+
+car: niva
+pay: 4500p
+username: tola
+time of rent: 30min
+===================================================================
+car: mersedes benz c class
+pay: 75000p
+username: lisa
+time of rent: 150min
+===================================================================
