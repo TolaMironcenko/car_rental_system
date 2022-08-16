@@ -16,3 +16,22 @@ start: OK
 print all cars:OK
 error rent:ERROR: don't have this car
 end: OK
+start: OK
+print all cars:OK
+end: OK
+start: OK
+print all cars:OK
+start rent:OK
+end: OK
+start: OK
+error rent:ERROR: don't have this car
+end: OK
+start: OK
+print all cars:OK
+end: OK
+start: OK
+print all cars:OK
+end: OK
+start: OK
+print all cars:OK
+end: OK

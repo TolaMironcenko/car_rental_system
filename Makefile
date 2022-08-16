@@ -1,6 +1,5 @@
 build:
-	g++ -o main *.cpp
-	./main
+	g++ -o main main.cpp car.h car.cpp termcolor.hpp
 
 buildclang:
 	clang++ -o main *.cpp
