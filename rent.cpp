@@ -8,7 +8,7 @@ void rent(string carname) {
     cin >> username;
     cout << termcolor::white << "Введите время аренды в минутах: ";
     int time_of_rent;
-    ofstream fout("log.txt", std::ios::app);
+    ofstream fout("logs/log.txt", std::ios::app);
     cin >> time_of_rent;
     cout << termcolor::white << "Вам необходимо заплатить ";
     int price_to_pay = time_of_rent*get_price_by_carname(carname);

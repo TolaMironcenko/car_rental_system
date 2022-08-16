@@ -28,13 +28,13 @@ Car carlist[AMOUNT_CARS] = {
 
 void start_image() {
     string buffer;
-    ifstream startimagefile("start.txt");
+    ifstream startimagefile("img/start.txt");
     while(!startimagefile.eof()) {
         getline(startimagefile, buffer);
         cout << buffer << "\n";
     }
     startimagefile.close();
-    ofstream logsfile("alllogs.txt",  std::ios::app);
+    ofstream logsfile("logs/alllogs.txt",  std::ios::app);
     logsfile << termcolor::white << "start: " << termcolor::green << "OK\n";
     logsfile.close();
 }
@@ -42,13 +42,13 @@ void start_image() {
 void end() {
     cout << termcolor::green;
     string buffer;
-    ifstream endimage("exit.txt");
+    ifstream endimage("img/exit.txt");
     while(!endimage.eof()) {
         getline(endimage, buffer);
         cout << buffer << "\n";
     }
     endimage.close();
-    ofstream logsfile("alllogs.txt",  std::ios::app);
+    ofstream logsfile("logs/alllogs.txt",  std::ios::app);
     logsfile << termcolor::white << "end: " << termcolor::green << "OK\n";
     logsfile.close();
     exit(0);
@@ -101,7 +101,7 @@ void print_all_cars() {
         cout << termcolor::white << "\t||\n";
         cout << termcolor::white << "--------------------------------------------------\n";
     }
-    ofstream logsfile("alllogs.txt",  std::ios::app);
+    ofstream logsfile("logs/alllogs.txt",  std::ios::app);
     logsfile << termcolor::white << "print all cars:" << termcolor::green << "OK\n";
     logsfile.close();
 }

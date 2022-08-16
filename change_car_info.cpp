@@ -11,7 +11,7 @@ void change_carname(bool print, string carname, string new_carname) {
             carlist[i].setname(new_carname);
             if (print) {
                 cout << termcolor::white << "Новыe данные автомобиля\n";
-                ofstream logsfile("alllogs.txt",  std::ios::app);
+                ofstream logsfile("logs/alllogs.txt",  std::ios::app);
                 logsfile << termcolor::white << "change carname:" << termcolor::green << "OK\n";
                 logsfile.close();
                 carlist[i].print();
@@ -27,7 +27,7 @@ void change_carprice(bool print, string carname, int new_carprice) {
             carlist[i].setprice(new_carprice);
             if (print) {
                 cout << termcolor::white << "Новыe данные автомобиля\n";
-                ofstream logsfile("alllogs.txt",  std::ios::app);
+                ofstream logsfile("logs/alllogs.txt",  std::ios::app);
                 logsfile << termcolor::white << "change carprice:" << termcolor::green << "OK\n";
                 logsfile.close();
                 carlist[i].print();
@@ -43,7 +43,7 @@ void change_carname_and_carprice(string carname, string new_carname, int new_car
             carlist[i].setname(new_carname);
             carlist[i].setprice(new_carprice);
             cout << termcolor::white << "Новый данные автомобиля\n";
-            ofstream logsfile("alllogs.txt",  std::ios::app);
+            ofstream logsfile("logs/alllogs.txt",  std::ios::app);
             logsfile << termcolor::white << "change carinfo:" << termcolor::green << "OK\n";
             logsfile.close();
             carlist[i].print();
